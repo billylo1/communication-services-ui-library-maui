@@ -45,9 +45,10 @@ We appreciate your feedback and energy helping us improve our services. [If you'
 1. Navigate to `/AndroidMauiBindings` and in this directory in terminal run `./downloadJarScript.sh`. `GitBash` or `Windows Subsystem for Linux (WSL)` should be enabled to run `.sh` on Windows.
 2. Navigate to `communication-services-ui-library-maui/iOSMauiBindings/ProxyLibs/CommunicationUI-Proxy` and in this directory in terminal run `./iOSFramework.sh -d`.
 3. Open `communication-services-ui-library-maui/CommunicationCallingSampleMauiApp` in Visual Studio code.
-4. Click `CommunicationCallingSampleMauiApp.sln`, `Solution Explorer` will become visible.
-5. Click `CommunicationCallingSampleMauiApp.csproj`, `{}` will become visible in Visual Studio Code bottom bar. Select `Android` or `iOS` device following `net8.0-ios/net8.0-android` in `CommunicationCallingSampleMauiApp.csproj`.
-6. Right click on `CommunicationCallingSampleMauiApp` in solution explorer and click on `Debug` -> `Start`.
+4. Edit CommunicationCallingSampleMauiApp/CommunicationCallingSampleMauiApp.csproj and uncomment <TargetFrameworks>net8.0-ios</TargetFrameworks>.
+5. Click `CommunicationCallingSampleMauiApp.sln`, `Solution Explorer` will become visible.
+6. Click `CommunicationCallingSampleMauiApp.csproj`, `{}` will become visible in Visual Studio Code bottom bar. Select `Android` or `iOS` device following `net8.0-ios/net8.0-android` in `CommunicationCallingSampleMauiApp.csproj`.
+7. Right click on `CommunicationCallingSampleMauiApp` in solution explorer and click on `Debug` -> `Start`.
 
 ### Folder Structure
 
