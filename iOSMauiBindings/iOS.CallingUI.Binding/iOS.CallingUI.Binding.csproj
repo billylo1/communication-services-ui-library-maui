@@ -5,6 +5,7 @@
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NoWarn>NU5123</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

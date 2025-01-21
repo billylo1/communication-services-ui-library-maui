@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<!-- <TargetFrameworks>net8.0-ios</TargetFrameworks> -->
 		<!-- <TargetFrameworks>net8.0-android</TargetFrameworks> -->
-		<TargetFrameworks>net8.0-android</TargetFrameworks>
+		<TargetFrameworks>net8.0-ios;net8.0-android</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>CommunicationCallingSampleMauiApp</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -11,7 +11,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<!-- Display name -->
 		<ApplicationTitle>CommunicationCallingSampleMauiApp</ApplicationTitle>
-
+		<NoWarn>BG8605,CS0618,APT2000</NoWarn>
 		<!-- App Identifier -->
 		<ApplicationId>com.azure.communication.ui.calling.mauisampleapp</ApplicationId>
 		<ApplicationIdGuid>5435a0cc-b5b1-49d7-bd21-231980ccfea3</ApplicationIdGuid>
@@ -57,8 +57,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Sharpie-Curses" Version="1.7.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.83" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">

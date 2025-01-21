@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CommunicationCallingSampleMauiApp.MainPage">
     <ScrollView>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-           <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+           <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
                <Label Text="Video calling samples" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="26" FontFamily="SF Pro Display" FontAttributes="Bold"/>
            </StackLayout>     
            <Button Text="Join a call" Margin="20" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnJoinCallButtonClicked" BackgroundColor="#0078D4" TextColor="White"></Button>

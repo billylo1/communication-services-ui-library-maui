@@ -22,6 +22,9 @@ namespace CommunicationCallingSampleMauiApp.Platforms.iOS
             callScreenControlBarOptionsProxy.LeaveCallConfirmationMode = isLeaveCallConfirmationEnabled;
             CallScreenOptionsProxy callScreenOptions = new CallScreenOptionsProxy();
             callScreenOptions.CallScreenControlBarOptions = callScreenControlBarOptionsProxy;
+            CaptionsOptionsProxy captionsOptions = new CaptionsOptionsProxy();
+            captionsOptions.CaptionsOn = callControlProps.Value.captionsOn;
+            captionsOptions.SpokenLanguage = callControlProps.Value.spokenLanguage;
 
             CommunicationLocalizationProxy localizationProxy = null;
             if (!(localization is null))
@@ -38,6 +41,8 @@ namespace CommunicationCallingSampleMauiApp.Platforms.iOS
             localDataOption.CallScreenTitle = callControlProps.Value.title;
             localDataOption.CallScreenSubtitle = callControlProps.Value.subtitle;
             localDataOption.UpdateTitleSubtitleOnParticipantCountChange = callControlProps.Value.updateSubtitleOnParticipantCountChange;
+            localDataOption.CaptionsOn = callControlProps.Value.captionsOn;
+            localDataOption.SpokenLanguage = callControlProps.Value.spokenLanguage;
             CommunicationScreenOrientationProxy screenOrientationProxy = new CommunicationScreenOrientationProxy();
             screenOrientationProxy.CallScreenOrientation = orientationProps.Value.callScreenOrientation;
             screenOrientationProxy.SetupScreenOrientation = orientationProps.Value.setupScreenOrientation;
@@ -61,6 +66,7 @@ namespace CommunicationCallingSampleMauiApp.Platforms.iOS
                 enableSystemPictureInPictureWhenMultitasking: true,
                 enableCallKit: true,
                 callScreenOptionsProxy: callScreenOptions,
+                captionsOptionsProxy: captionsOptions,
                 errorCallback: null,
                 onRemoteParticipantJoinedCallback: null,
                 (callstate) => onCallStateChanged(callstate),

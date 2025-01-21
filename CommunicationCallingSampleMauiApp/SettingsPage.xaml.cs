@@ -82,6 +82,9 @@ public partial class SettingsPage : ContentPage
             callControlProps.title = callScreenTitle.Text;
             callControlProps.subtitle = callScreenSubtitle.Text;
             callControlProps.updateSubtitleOnParticipantCountChange = updateTitleWithParticipantCount.IsToggled;
+
+            // need to add captions buttons
+
             Callback(localization, dataModelInjection, orientationProps, callControlProps);
         }
 
@@ -227,4 +230,7 @@ public struct CallControlProps
     public String title;
     public String subtitle;
     public Boolean updateSubtitleOnParticipantCountChange;
+    public Boolean captionsOn;
+    public String spokenLanguage;
+
 }

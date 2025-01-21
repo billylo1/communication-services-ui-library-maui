@@ -76,7 +76,8 @@ namespace CommunicationCallingSampleMauiApp.Platforms.Android
                 .SetCameraOn(callControlProps.Value.isCameraON)
                 .SetMicrophoneOn(callControlProps.Value.isMicrophoneON)
                 .SetAudioVideoMode(CallCompositeAudioVideoMode.AudioAndVideo)
-                .SetCallScreenOptions(callScreenOptions);
+                .SetCallScreenOptions(callScreenOptions)
+                .SetCaptionsOptions();
 
             if (dataModelInjection != null)
             {

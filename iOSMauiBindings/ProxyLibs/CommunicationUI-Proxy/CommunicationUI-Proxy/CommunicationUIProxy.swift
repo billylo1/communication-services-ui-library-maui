@@ -64,7 +64,10 @@ public class CommunicationLocalDataOptionProxy: NSObject {
     public var callScreenTitle: String? = nil
     public var callScreenSubtitle: String? = nil
     public var updateTitleSubtitleOnParticipantCountChange: Bool = false
+    public var captionsOn: Bool = true
+    public var spokenLanguage: String? = nil
 
+    
     public func setLocalDataOptionProperties(_ personaData: CommunicationPersonaDataProxy) {
         self.personaData = personaData
     }
@@ -140,6 +143,12 @@ public class CallScreenOptionsProxy: NSObject {
 }
 
 @objcMembers
+public class CaptionsOptionsProxy: NSObject {
+    public var captionsOn: Bool = true
+    public var spokenLanguage: String?
+}
+
+@objcMembers
 public class IncomingCallProxy: NSObject   {
     public var callId: String?
     public var callerDisplayName: String?
@@ -164,6 +173,7 @@ public class CommunicationUIProxy: NSObject {
     var callComposite: CallComposite? = nil
     private var onIncomingCallProvideRemoteInfo: (((String) -> CallKitRemoteInfoProxy))?
     var callScreenOptionsProxy: CallScreenOptionsProxy?
+    var captionsOptionsProxy: CaptionsOptionsProxy?
     var headerViewData: CallScreenHeaderViewData?
     var participantCount: Int = 0
     var updateTitleSubtitleOnParticipantCountChange: Bool = false
@@ -177,6 +187,7 @@ public class CommunicationUIProxy: NSObject {
                                     enableSystemPictureInPictureWhenMultitasking: Bool,
                                     enableCallKit: Bool,
                                     callScreenOptionsProxy: CallScreenOptionsProxy?,
+                                    captionsOptionsProxy: CaptionsOptionsProxy?,
                                     errorCallback: ((CommunicationErrorProxy) -> Void)?,
                                     onRemoteParticipantJoinedCallback: (([String]) -> Void)?,
                                     onCallStateChangedCallback: ((CommunicationCallStateProxy) -> Void)?,
@@ -194,6 +205,7 @@ public class CommunicationUIProxy: NSObject {
             var callScreenControlBarOptions: CallScreenControlBarOptions?
             self.onIncomingCallProvideRemoteInfo = onIncomingCallProvideRemoteInfo
             self.callScreenOptionsProxy = callScreenOptionsProxy
+            self.captionsOptionsProxy = captionsOptionsProxy
 
             if let theme = theme {
                 xamarinTheme = XamarinTheme(customPrimaryColor: theme.primaryColor)
@@ -333,7 +345,7 @@ public class CommunicationUIProxy: NSObject {
                                 callKitRemoteInfo: CallKitRemoteInfoProxy?) {
         if let uuid = UUID(uuidString: groupCall.groupId) {
             var localDataOptions: LocalOptions?
-            if let localData = localData {
+            if let localData: CommunicationLocalDataOptionProxy = localData {
                 localDataOptions = createLocalDataOptions(localData)
             }
             callComposite?.launch(locator: .groupCall(groupId: uuid), localOptions: localDataOptions)
@@ -501,7 +513,8 @@ extension CommunicationUIProxy {
         let title = localDataOptionsProxy.callScreenTitle ?? ""
         let subtitle = localDataOptionsProxy.callScreenSubtitle ?? ""
         var callScreenOptions: CallScreenOptions? = nil
-        
+        let captionsOn = localDataOptionsProxy.captionsOn
+        let spokenLanguage = localDataOptionsProxy.spokenLanguage ?? ""
         if let callScreenOptionsProxy = self.callScreenOptionsProxy {
             let callScreenControlBarOptions = CallScreenControlBarOptions(leaveCallConfirmationMode: getLeaveCallConfirmationMode(mode: callScreenOptionsProxy.callScreenControlBarOptions?.leaveCallConfirmationMode ?? "always_enabled"))
             if !title.isEmpty || !subtitle.isEmpty {

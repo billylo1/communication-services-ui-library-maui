@@ -8,7 +8,9 @@ namespace CommunicationCallingSampleMauiApp;
 public partial class JoinCallPage : ContentPage
 {
     IComposite callComposite = new Composite();
+#pragma warning disable IDE0044 // Add readonly modifier
     bool isTeamsCall = false;
+#pragma warning restore IDE0044 // Add readonly modifier
 
     const String groupCallTitle = "Group call ID";
     const String groupCallEntryPlaceholder = "Enter call ID";
@@ -52,12 +54,21 @@ public partial class JoinCallPage : ContentPage
         _callControlProps.isSkipSetupON = false;
         _callControlProps.isMicrophoneON = false;
         _callControlProps.isCameraON = false;
+        _callControlProps.captionsOn = true;
+        _callControlProps.spokenLanguage = "en-US";
 
         groupCallFrame.IsVisible = true;
         teamsCallFrame.IsVisible = false;
         onetoNCallFrame.IsVisible = false;
         roomsCallFrame.IsVisible = false;
         callType = CallType.GroupCall;
+
+        tokenEntry.Text = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU3Qjg2NEUwQjM0QUQ0RDQyRTM3OTRBRTAyNTAwRDVBNTE5MjA1RjUiLCJ4NXQiOiJWN2hrNExOSzFOUXVONVN1QWxBTldsR1NCZlUiLCJ0eXAiOiJKV1QifQ.eyJza3lwZWlkIjoiYWNzOjVmMGE2YTMxLWZiZWMtNDdmOC1iYTNkLWJkYzVkYzNmYmZkZV8wMDAwMDAyNS0yNjZhLTE5ODAtZTYwNS05MTNhMGQwMGFhYmIiLCJzY3AiOjE3OTIsImNzaSI6IjE3Mzc0MjM4NzciLCJleHAiOjE3Mzc1MTAyNzcsInJnbiI6ImFtZXIiLCJhY3NTY29wZSI6InZvaXAiLCJyZXNvdXJjZUlkIjoiNWYwYTZhMzEtZmJlYy00N2Y4LWJhM2QtYmRjNWRjM2ZiZmRlIiwicmVzb3VyY2VMb2NhdGlvbiI6InVuaXRlZHN0YXRlcyIsImlhdCI6MTczNzQyMzg3N30.qj_rzN0iPKgUg0jabqSPxtbo9E8-LwufDp4F9RQQgHjnZrc3iy1f_2k3fAG13v_6sO3WBw11lw45J5w8KPU8AmAGsXO1O-oHsgUVjS-e2KonhhBvrMTR2vZR2P5RaIxdYYWDDZczp_JunLJ23dHvklp0Nm-SSG9-EK_OJ3O6I1ghAejod0VdV9JfVWerJySAL-OCRQT3KLkSH0xRMGjulmaz3hE6tjt9kVMQ3olVHL4BBzlWP9_xLXM9k_eSvpyauf7PzWONbveYVH_CV4502fxj6tu2d2qxJCIXrKHs1Dyt5pU_kbZYpQ_MLc61duMrByyrvNFfY09t0t4IZx_fCQ";
+        meetingEntry.Text = "99439556614537041";
+        name.Text = "Billy";
+
+        OnRoomsCallClicked(this, null);
+
     }
 
     async void OnToolbarClicked(object sender, EventArgs e)

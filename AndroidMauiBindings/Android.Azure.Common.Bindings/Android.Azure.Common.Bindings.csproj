@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
      <IsBinding>True</IsBinding>
     <EnableDefaultAndroidItems>false</EnableDefaultAndroidItems>
+    <NoWarn>BG8605,CS0618,APT2000</NoWarn>
   </PropertyGroup>
     <ItemGroup>
        <AndroidLibrary Include="Jars\android-retrofuture-1.7.3.jar" Bind="false" />
