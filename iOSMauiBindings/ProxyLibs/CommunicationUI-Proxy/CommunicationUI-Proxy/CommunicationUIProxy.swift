@@ -367,7 +367,6 @@ public class CommunicationUIProxy: NSObject {
         if let localData = localData {
             localDataOptions = createLocalDataOptions(localData)
         }
-        
         callComposite?.launch(locator: .roomCall(roomId: roomsCall.roomId),
                               localOptions: localDataOptions)
     }
@@ -530,6 +529,7 @@ extension CommunicationUIProxy {
                             microphoneOn: localDataOptionsProxy.microphoneOn,
                             skipSetupScreen: localDataOptionsProxy.skipSetupScreen,
                             audioVideoMode: getAudioVideoMode(mode: localDataOptionsProxy.audioVideoMode ?? "audioAndVideo"),
+                            captionsOptions: captionsOptions,
                             callScreenOptions: callScreenOptions)
     }
 
