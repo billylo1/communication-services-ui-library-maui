@@ -59,9 +59,6 @@ public partial class JoinCallPage : ContentPage
         roomsCallFrame.IsVisible = false;
         callType = CallType.GroupCall;
 
-        tokenEntry.Text = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjU3Qjg2NEUwQjM0QUQ0RDQyRTM3OTRBRTAyNTAwRDVBNTE5MjA1RjUiLCJ4NXQiOiJWN2hrNExOSzFOUXVONVN1QWxBTldsR1NCZlUiLCJ0eXAiOiJKV1QifQ.eyJza3lwZWlkIjoiYWNzOjVmMGE2YTMxLWZiZWMtNDdmOC1iYTNkLWJkYzVkYzNmYmZkZV8wMDAwMDAyNS0zMGVmLTc1NDktODcwNC05MTNhMGQwMDYxYjEiLCJzY3AiOjE3OTIsImNzaSI6IjE3Mzc2MDAzODkiLCJleHAiOjE3Mzc2ODY3ODksInJnbiI6ImFtZXIiLCJhY3NTY29wZSI6InZvaXAiLCJyZXNvdXJjZUlkIjoiNWYwYTZhMzEtZmJlYy00N2Y4LWJhM2QtYmRjNWRjM2ZiZmRlIiwicmVzb3VyY2VMb2NhdGlvbiI6InVuaXRlZHN0YXRlcyIsImlhdCI6MTczNzYwMDM4OX0.lUkQjOwUJDWVpHHqeq7T3FHEY-FHJxTRXNpGSvBROKTkdIDvRkW5w_j_I2sinyaJdWZEN2BbEevwhzAZG7BO2MBI7pI5xLdhTqihY52dDuay0T6rne8F9O4h9oYPgunquFdG7nSrF5SQxn7iJ2uEnz4VGGTf7_Y_O9puyx0HsLFC6G98PUV_LhFfmkiwFsgJbiktt0EpF72kB6GO8LdsqOGuceMBscmsE5Zhy5PJXa_Fvn6o70joBsH2mEdpscnVm61rAngHkj0U9d4PBL0_XV3Nz6kZslbC_5qFA7_y8UD9W7MB1vBvSn_s0fY3AHTchw8If0msdPthN8bE4Sn2gg";
-        meetingEntry.Text = "99453337661743323";
-        name.Text = "Billy";
     }
 
     async void OnToolbarClicked(object sender, EventArgs e)

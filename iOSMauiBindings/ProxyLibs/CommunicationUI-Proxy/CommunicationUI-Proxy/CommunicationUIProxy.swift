@@ -272,7 +272,7 @@ public class CommunicationUIProxy: NSObject {
             callComposite?.events.onCaptionsDataReceived = { captionsData in
                 guard let callback = onCaptionsDataReceivedCallback else { return }
                 let captionsDataProxy = CommunicationCaptionsDataProxy()
-                // captionsDataProxy.resultType = captionsData.resultType     // tbd
+                captionsDataProxy.resultType = captionsData.resultType     
                 captionsDataProxy.speakerRawId = captionsData.speakerRawId
                 captionsDataProxy.speakerName = captionsData.speakerName
                 captionsDataProxy.spokenLanguage = captionsData.spokenLanguage
