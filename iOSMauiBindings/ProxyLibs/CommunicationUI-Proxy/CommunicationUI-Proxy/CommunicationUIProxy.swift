@@ -66,10 +66,10 @@ public class CommunicationLocalDataOptionProxy: NSObject {
     public var updateTitleSubtitleOnParticipantCountChange: Bool = false
     public var captionsOptions: CommunicationCaptionsOptionsProxy? = nil
 
-
     public func setLocalDataOptionProperties(_ personaData: CommunicationPersonaDataProxy) {
         self.personaData = personaData
     }
+
 }
 
 @objcMembers
@@ -510,7 +510,7 @@ extension CommunicationUIProxy {
         let title = localDataOptionsProxy.callScreenTitle ?? ""
         let subtitle = localDataOptionsProxy.callScreenSubtitle ?? ""
         var callScreenOptions: CallScreenOptions? = nil
-        let captionsOptions: CaptionsOptions? = CaptionsOptions(captionsOn: localDataOptionsProxy.captionsOptions?.captionsOn, spokenLanguage: localDataOptionsProxy.captionsOptions?.spokenLanguage)
+        let captionsOptions: CaptionsOptions? = CaptionsOptions(captionsOn: localDataOptionsProxy.captionsOptions!.captionsOn, spokenLanguage: localDataOptionsProxy.captionsOptions!.spokenLanguage)
 
         if let callScreenOptionsProxy = self.callScreenOptionsProxy {
             let callScreenControlBarOptions = CallScreenControlBarOptions(leaveCallConfirmationMode: getLeaveCallConfirmationMode(mode: callScreenOptionsProxy.callScreenControlBarOptions?.leaveCallConfirmationMode ?? "always_enabled"))

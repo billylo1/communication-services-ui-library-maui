@@ -5,6 +5,7 @@ using ObjCRuntime;
 
 namespace iOS.CallingUI.Binding
 {
+	// @interface CallCompositeUserReportedIssueProxy : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC21CommunicationUI_Proxy35CallCompositeUserReportedIssueProxy")]
 	interface CallCompositeUserReportedIssueProxy
 	{
@@ -70,6 +71,19 @@ namespace iOS.CallingUI.Binding
 		string Code { get; set; }
 	}
 
+	// @interface CommunicationCaptionsOptionsProxy : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC21CommunicationUI_Proxy33CommunicationCaptionsOptionsProxy")]
+	interface CommunicationCaptionsOptionsProxy
+	{
+		// @property (nonatomic) BOOL captionsOn;
+		[Export ("captionsOn")]
+		bool CaptionsOn { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable spokenLanguage;
+		[NullAllowed, Export ("spokenLanguage")]
+		string SpokenLanguage { get; set; }
+	}
+
 	// @interface CommunicationDismissedProxy : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC21CommunicationUI_Proxy27CommunicationDismissedProxy")]
 	interface CommunicationDismissedProxy
@@ -131,6 +145,10 @@ namespace iOS.CallingUI.Binding
 		// @property (nonatomic) BOOL updateTitleSubtitleOnParticipantCountChange;
 		[Export ("updateTitleSubtitleOnParticipantCountChange")]
 		bool UpdateTitleSubtitleOnParticipantCountChange { get; set; }
+
+		// @property (nonatomic, strong) CommunicationCaptionsOptionsProxy * _Nullable captionsOptions;
+		[NullAllowed, Export ("captionsOptions", ArgumentSemantic.Strong)]
+		CommunicationCaptionsOptionsProxy CaptionsOptions { get; set; }
 
 		// -(void)setLocalDataOptionProperties:(CommunicationPersonaDataProxy * _Nonnull)personaData;
 		[Export ("setLocalDataOptionProperties:")]
