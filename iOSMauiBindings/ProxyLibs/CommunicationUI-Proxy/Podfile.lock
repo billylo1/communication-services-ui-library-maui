@@ -2,7 +2,7 @@ PODS:
   - AzureCommunicationCalling (2.14.1):
     - AzureCommunicationCommon (~> 1.0)
   - AzureCommunicationCommon (1.2.0)
-  - AzureCommunicationUICalling (1.13.0):
+  - AzureCommunicationUICalling (1.13.1):
     - AzureCommunicationCalling (= 2.14.1)
     - AzureCore (= 1.0.0-beta.15)
     - MicrosoftFluentUI/ActivityIndicator_ios (= 0.10.0)
@@ -49,23 +49,33 @@ PODS:
     - MicrosoftFluentUI/Core_ios
 
 DEPENDENCIES:
-  - AzureCommunicationUICalling (= 1.13.0)
+  - AzureCommunicationUICalling (from `https://github.com/billylo1/communication-ui-library-ios.git`, commit `7358af12fe5b3786bd02a92d0dc7c1b836794ef9`, branch `Attempt2`)
 
 SPEC REPOS:
   trunk:
     - AzureCommunicationCalling
     - AzureCommunicationCommon
-    - AzureCommunicationUICalling
     - AzureCore
     - MicrosoftFluentUI
+
+EXTERNAL SOURCES:
+  AzureCommunicationUICalling:
+    :branch: Attempt2
+    :commit: 7358af12fe5b3786bd02a92d0dc7c1b836794ef9
+    :git: https://github.com/billylo1/communication-ui-library-ios.git
+
+CHECKOUT OPTIONS:
+  AzureCommunicationUICalling:
+    :commit: 7358af12fe5b3786bd02a92d0dc7c1b836794ef9
+    :git: https://github.com/billylo1/communication-ui-library-ios.git
 
 SPEC CHECKSUMS:
   AzureCommunicationCalling: 8907740906f89374676d0b28ae1de9af491a950b
   AzureCommunicationCommon: 130a21be2be889f83dc4adbf994af6285f962de8
-  AzureCommunicationUICalling: b09d4b20521245331861449f5e6cac2799dca090
+  AzureCommunicationUICalling: cbd035e8fd410d02e0c6352906f999d5d2ecc5b4
   AzureCore: ebbf7cf4dfe72afc7584088c38d1c99f5a35d647
   MicrosoftFluentUI: f6db695718efb93f4ca9bdc366c00b80a1f91dba
 
-PODFILE CHECKSUM: 8a0ecd63bbe7dc3e66646d4cea85b43a57e65c65
+PODFILE CHECKSUM: db83762039f430036239d6bd3333af661428c879
 
 COCOAPODS: 1.16.2

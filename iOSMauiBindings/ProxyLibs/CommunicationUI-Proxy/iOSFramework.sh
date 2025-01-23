@@ -19,13 +19,14 @@ else
 fi
 echo "Configuration set is ${CONFIGURATION}"
 
+rm -rf DeviceFramework SimulatorFramework Framework Pods
 /usr/bin/xcodebuild clean
 pod install
 mkdir -p "$(PWD)/SimulatorFramework"
 mkdir -p "$(PWD)/DeviceFramework"
 
-/usr/bin/xcodebuild -sdk iphoneos -configuration Release -workspace CommunicationUI-Proxy.xcworkspace -scheme CommunicationUI-Proxy -verbose CODE_SIGNING_ALLOWED=NO SYMROOT=$(PWD)/'DeviceFramework'   build
-/usr/bin/xcodebuild -sdk iphonesimulator -configuration Release -workspace CommunicationUI-Proxy.xcworkspace -scheme CommunicationUI-Proxy -verbose CODE_SIGNING_ALLOWED=NO SYMROOT=$(PWD)/'SimulatorFramework'  build
+/usr/bin/xcodebuild -sdk iphoneos -configuration Release -workspace CommunicationUI-Proxy.xcworkspace -scheme CommunicationUI-Proxy CODE_SIGNING_ALLOWED=NO SYMROOT=$(PWD)/'DeviceFramework'   build
+/usr/bin/xcodebuild -sdk iphonesimulator -configuration Release -workspace CommunicationUI-Proxy.xcworkspace -scheme CommunicationUI-Proxy CODE_SIGNING_ALLOWED=NO SYMROOT=$(PWD)/'SimulatorFramework'  build
 
 
 UNIVERSAL_OUTPUTFOLDER=$(PWD)/'Framework'/${CONFIGURATION}'-universal'

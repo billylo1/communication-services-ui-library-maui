@@ -5,6 +5,7 @@ using UIKit;
 using System;
 using System.Collections.Generic;
 using Microsoft.Maui.Platform;
+using System.Diagnostics;
 
 namespace CommunicationCallingSampleMauiApp.Platforms.iOS
 {
@@ -71,6 +72,7 @@ namespace CommunicationCallingSampleMauiApp.Platforms.iOS
                 errorCallback: null,
                 onRemoteParticipantJoinedCallback: null,
                 (callstate) => onCallStateChanged(callstate),
+                (captionsData) => onCaptionsDataReceived(captionsData),
                 (dismissed) => onDismissed(dismissed),
                 (issue) => onUserReportedIssueCallback(issue),
                 (mri) => onIncomingCallProvideRemoteInfo(mri),
@@ -129,18 +131,18 @@ namespace CommunicationCallingSampleMauiApp.Platforms.iOS
 
         private void handleError(CommunicationErrorProxy error)
         {
-            Console.WriteLine("handleCall errorCode " + error.Code);
+            Debug.WriteLine("handleCall errorCode " + error.Code);
         }
 
         private void onDismissed(CommunicationDismissedProxy dismissed)
         {
             _p.Dismiss();
-            Console.WriteLine("onDismissed " + dismissed.ErrorCode);
+            Debug.WriteLine("onDismissed " + dismissed.ErrorCode);
         }
 
         private void onUserReportedIssueCallback(CallCompositeUserReportedIssueProxy issue)
         {
-            Console.WriteLine("onUserReportedIssueCallback " + issue.UserMessage);
+            Debug.WriteLine("onUserReportedIssueCallback " + issue.UserMessage);
         }
 
         private CallKitRemoteInfoProxy onIncomingCallProvideRemoteInfo(String mri)
@@ -153,23 +155,29 @@ namespace CommunicationCallingSampleMauiApp.Platforms.iOS
 
         private void onIncomingCall(IncomingCallProxy incomingCall)
         {
-            Console.WriteLine("onIncomingCall " + incomingCall.CallId);
+            Debug.WriteLine("onIncomingCall " + incomingCall.CallId);
         }
 
         private void onIncomingCallCancelled(IncomingCallCancelledProxy incomingCallCancelled)
         {
-            Console.WriteLine("onIncomingCallCancelled " + incomingCallCancelled.CallId);
+            Debug.WriteLine("onIncomingCallCancelled " + incomingCallCancelled.CallId);
         }
 
         private void onIncomingCallAcceptedFromCallKit(String callId)
         {
-            Console.WriteLine("onIncomingCallAcceptedFromCallKit " + callId);
+            Debug.WriteLine("onIncomingCallAcceptedFromCallKit " + callId);
         }
 
         private void onCallStateChanged(CommunicationCallStateProxy callstate)
         {
-            Console.WriteLine("CallStateCode " + _p.CallStateCode);
-            Console.WriteLine("onCallStateChanged " + callstate.Code);
+            Debug.WriteLine("CallStateCode " + _p.CallStateCode);
+            Debug.WriteLine("onCallStateChanged " + callstate.Code);
+        }
+
+        private void onCaptionsDataReceived(CommunicationCaptionsDataProxy captionsData)
+        {
+            Debug.WriteLine("captionsData " + captionsData.SpokenText);
+            Debug.WriteLine("captionsData " + captionsData.Timestamp);
         }
 
         private void onRemoteParticipant(NSArray<NSString> rawIds)

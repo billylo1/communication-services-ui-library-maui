@@ -71,6 +71,39 @@ namespace iOS.CallingUI.Binding
 		string Code { get; set; }
 	}
 
+	// @interface CommunicationCaptionsDataProxy : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC21CommunicationUI_Proxy30CommunicationCaptionsDataProxy")]
+	interface CommunicationCaptionsDataProxy
+	{
+		// @property (copy, nonatomic) NSString * _Nonnull speakerRawId;
+		[Export ("speakerRawId")]
+		string SpeakerRawId { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull speakerName;
+		[Export ("speakerName")]
+		string SpeakerName { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull spokenLanguage;
+		[Export ("spokenLanguage")]
+		string SpokenLanguage { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull spokenText;
+		[Export ("spokenText")]
+		string SpokenText { get; set; }
+
+		// @property (copy, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp", ArgumentSemantic.Copy)]
+		NSDate Timestamp { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable captionLanguage;
+		[NullAllowed, Export ("captionLanguage")]
+		string CaptionLanguage { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable captionText;
+		[NullAllowed, Export ("captionText")]
+		string CaptionText { get; set; }
+	}
+
 	// @interface CommunicationCaptionsOptionsProxy : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC21CommunicationUI_Proxy33CommunicationCaptionsOptionsProxy")]
 	interface CommunicationCaptionsOptionsProxy
@@ -215,9 +248,9 @@ namespace iOS.CallingUI.Binding
 	[BaseType (typeof(NSObject), Name = "_TtC21CommunicationUI_Proxy20CommunicationUIProxy")]
 	interface CommunicationUIProxy
 	{
-		// -(void)createCallCompositeWithToken:(NSString * _Nonnull)token displayName:(NSString * _Nonnull)displayName theme:(CommunicationThemeProxy * _Nullable)theme localization:(CommunicationLocalizationProxy * _Nullable)localization orientationProxy:(CommunicationScreenOrientationProxy * _Nullable)orientationProxy enableMultitasking:(BOOL)enableMultitasking enableSystemPictureInPictureWhenMultitasking:(BOOL)enableSystemPictureInPictureWhenMultitasking enableCallKit:(BOOL)enableCallKit callScreenOptionsProxy:(CallScreenOptionsProxy * _Nullable)callScreenOptionsProxy errorCallback:(void (^ _Nullable)(CommunicationErrorProxy * _Nonnull))errorCallback onRemoteParticipantJoinedCallback:(void (^ _Nullable)(NSArray<NSString *> * _Nonnull))onRemoteParticipantJoinedCallback onCallStateChangedCallback:(void (^ _Nullable)(CommunicationCallStateProxy * _Nonnull))onCallStateChangedCallback onDismissedCallback:(void (^ _Nullable)(CommunicationDismissedProxy * _Nonnull))onDismissedCallback onUserReportedIssueCallback:(void (^ _Nullable)(CallCompositeUserReportedIssueProxy * _Nonnull))onUserReportedIssueCallback onIncomingCallProvideRemoteInfo:(CallKitRemoteInfoProxy * _Nonnull (^ _Nullable)(NSString * _Nonnull))onIncomingCallProvideRemoteInfo onIncomingCall:(void (^ _Nullable)(IncomingCallProxy * _Nonnull))onIncomingCall onIncomingCallCancelled:(void (^ _Nullable)(IncomingCallCancelledProxy * _Nonnull))onIncomingCallCancelled onIncomingCallAcceptedFromCallKit:(void (^ _Nullable)(NSString * _Nonnull))onIncomingCallAcceptedFromCallKit;
-		[Export ("createCallCompositeWithToken:displayName:theme:localization:orientationProxy:enableMultitasking:enableSystemPictureInPictureWhenMultitasking:enableCallKit:callScreenOptionsProxy:errorCallback:onRemoteParticipantJoinedCallback:onCallStateChangedCallback:onDismissedCallback:onUserReportedIssueCallback:onIncomingCallProvideRemoteInfo:onIncomingCall:onIncomingCallCancelled:onIncomingCallAcceptedFromCallKit:")]
-		void CreateCallCompositeWithToken (string token, string displayName, [NullAllowed] CommunicationThemeProxy theme, [NullAllowed] CommunicationLocalizationProxy localization, [NullAllowed] CommunicationScreenOrientationProxy orientationProxy, bool enableMultitasking, bool enableSystemPictureInPictureWhenMultitasking, bool enableCallKit, [NullAllowed] CallScreenOptionsProxy callScreenOptionsProxy, [NullAllowed] Action<CommunicationErrorProxy> errorCallback, [NullAllowed] Action<NSArray<NSString>> onRemoteParticipantJoinedCallback, [NullAllowed] Action<CommunicationCallStateProxy> onCallStateChangedCallback, [NullAllowed] Action<CommunicationDismissedProxy> onDismissedCallback, [NullAllowed] Action<CallCompositeUserReportedIssueProxy> onUserReportedIssueCallback, [NullAllowed] Func<NSString, CallKitRemoteInfoProxy> onIncomingCallProvideRemoteInfo, [NullAllowed] Action<IncomingCallProxy> onIncomingCall, [NullAllowed] Action<IncomingCallCancelledProxy> onIncomingCallCancelled, [NullAllowed] Action<NSString> onIncomingCallAcceptedFromCallKit);
+		// -(void)createCallCompositeWithToken:(NSString * _Nonnull)token displayName:(NSString * _Nonnull)displayName theme:(CommunicationThemeProxy * _Nullable)theme localization:(CommunicationLocalizationProxy * _Nullable)localization orientationProxy:(CommunicationScreenOrientationProxy * _Nullable)orientationProxy enableMultitasking:(BOOL)enableMultitasking enableSystemPictureInPictureWhenMultitasking:(BOOL)enableSystemPictureInPictureWhenMultitasking enableCallKit:(BOOL)enableCallKit callScreenOptionsProxy:(CallScreenOptionsProxy * _Nullable)callScreenOptionsProxy errorCallback:(void (^ _Nullable)(CommunicationErrorProxy * _Nonnull))errorCallback onRemoteParticipantJoinedCallback:(void (^ _Nullable)(NSArray<NSString *> * _Nonnull))onRemoteParticipantJoinedCallback onCallStateChangedCallback:(void (^ _Nullable)(CommunicationCallStateProxy * _Nonnull))onCallStateChangedCallback onCaptionsDataReceivedCallback:(void (^ _Nullable)(CommunicationCaptionsDataProxy * _Nonnull))onCaptionsDataReceivedCallback onDismissedCallback:(void (^ _Nullable)(CommunicationDismissedProxy * _Nonnull))onDismissedCallback onUserReportedIssueCallback:(void (^ _Nullable)(CallCompositeUserReportedIssueProxy * _Nonnull))onUserReportedIssueCallback onIncomingCallProvideRemoteInfo:(CallKitRemoteInfoProxy * _Nonnull (^ _Nullable)(NSString * _Nonnull))onIncomingCallProvideRemoteInfo onIncomingCall:(void (^ _Nullable)(IncomingCallProxy * _Nonnull))onIncomingCall onIncomingCallCancelled:(void (^ _Nullable)(IncomingCallCancelledProxy * _Nonnull))onIncomingCallCancelled onIncomingCallAcceptedFromCallKit:(void (^ _Nullable)(NSString * _Nonnull))onIncomingCallAcceptedFromCallKit;
+		[Export ("createCallCompositeWithToken:displayName:theme:localization:orientationProxy:enableMultitasking:enableSystemPictureInPictureWhenMultitasking:enableCallKit:callScreenOptionsProxy:errorCallback:onRemoteParticipantJoinedCallback:onCallStateChangedCallback:onCaptionsDataReceivedCallback:onDismissedCallback:onUserReportedIssueCallback:onIncomingCallProvideRemoteInfo:onIncomingCall:onIncomingCallCancelled:onIncomingCallAcceptedFromCallKit:")]
+		void CreateCallCompositeWithToken (string token, string displayName, [NullAllowed] CommunicationThemeProxy theme, [NullAllowed] CommunicationLocalizationProxy localization, [NullAllowed] CommunicationScreenOrientationProxy orientationProxy, bool enableMultitasking, bool enableSystemPictureInPictureWhenMultitasking, bool enableCallKit, [NullAllowed] CallScreenOptionsProxy callScreenOptionsProxy, [NullAllowed] Action<CommunicationErrorProxy> errorCallback, [NullAllowed] Action<NSArray<NSString>> onRemoteParticipantJoinedCallback, [NullAllowed] Action<CommunicationCallStateProxy> onCallStateChangedCallback, [NullAllowed] Action<CommunicationCaptionsDataProxy> onCaptionsDataReceivedCallback, [NullAllowed] Action<CommunicationDismissedProxy> onDismissedCallback, [NullAllowed] Action<CallCompositeUserReportedIssueProxy> onUserReportedIssueCallback, [NullAllowed] Func<NSString, CallKitRemoteInfoProxy> onIncomingCallProvideRemoteInfo, [NullAllowed] Action<IncomingCallProxy> onIncomingCall, [NullAllowed] Action<IncomingCallCancelledProxy> onIncomingCallCancelled, [NullAllowed] Action<NSString> onIncomingCallAcceptedFromCallKit);
 
 		// -(void)startExperienceWithGroupCall:(GroupCallObjectProxy * _Nonnull)groupCall localData:(CommunicationLocalDataOptionProxy * _Nullable)localData callKitRemoteInfo:(CallKitRemoteInfoProxy * _Nullable)callKitRemoteInfo;
 		[Export ("startExperienceWithGroupCall:localData:callKitRemoteInfo:")]

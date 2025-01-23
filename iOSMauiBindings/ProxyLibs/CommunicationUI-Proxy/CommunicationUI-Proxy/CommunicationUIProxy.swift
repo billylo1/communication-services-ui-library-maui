@@ -109,6 +109,20 @@ public class CommunicationCallStateProxy: NSObject {
 }
 
 @objcMembers
+public class CommunicationCaptionsDataProxy: NSObject {                 // this is the equivalent of CallCompositeCaptionsData on the native side
+
+    public var  resultType: CaptionsResultType? = nil
+    public var  speakerRawId: String = ""
+    public var  speakerName: String = ""
+    public var  spokenLanguage: String = ""
+    public var  spokenText: String = ""
+    public var  timestamp: Date = Date()
+    public var  captionLanguage: String?
+    public var  captionText: String?
+}
+
+
+@objcMembers
 public class CommunicationScreenOrientationProxy: NSObject {
     public var callScreenOrientation: String = ""
     public var setupScreenOrientation: String = ""
@@ -189,12 +203,15 @@ public class CommunicationUIProxy: NSObject {
                                     errorCallback: ((CommunicationErrorProxy) -> Void)?,
                                     onRemoteParticipantJoinedCallback: (([String]) -> Void)?,
                                     onCallStateChangedCallback: ((CommunicationCallStateProxy) -> Void)?,
+                                    onCaptionsDataReceivedCallback: ((CommunicationCaptionsDataProxy) -> Void)?,
                                     onDismissedCallback: ((CommunicationDismissedProxy) -> Void)?,
                                     onUserReportedIssueCallback: ((CallCompositeUserReportedIssueProxy) -> Void)?,
                                     onIncomingCallProvideRemoteInfo: (((String) -> CallKitRemoteInfoProxy))?,
                                     onIncomingCall: ((IncomingCallProxy) -> Void)?,
                                     onIncomingCallCancelled: ((IncomingCallCancelledProxy) -> Void)?,
                                     onIncomingCallAcceptedFromCallKit: (((String) -> Void))?) {
+
+            print("> createCallComposite, token: \(token), displayName: \(displayName)")
             let options: CallCompositeOptions
             var xamarinTheme: XamarinTheme?
             var localizationOptions: LocalizationOptions?
@@ -248,6 +265,22 @@ public class CommunicationUIProxy: NSObject {
                 let callStateProxy = CommunicationCallStateProxy()
                 callStateProxy.code = callState.requestString
                 callback(callStateProxy)
+            }
+
+            //added
+
+            callComposite?.events.onCaptionsDataReceived = { captionsData in
+                guard let callback = onCaptionsDataReceivedCallback else { return }
+                let captionsDataProxy = CommunicationCaptionsDataProxy()
+                // captionsDataProxy.resultType = captionsData.resultType     // tbd
+                captionsDataProxy.speakerRawId = captionsData.speakerRawId
+                captionsDataProxy.speakerName = captionsData.speakerName
+                captionsDataProxy.spokenLanguage = captionsData.spokenLanguage
+                captionsDataProxy.spokenText = captionsData.spokenText
+                captionsDataProxy.timestamp = captionsData.timestamp
+                captionsDataProxy.captionLanguage = captionsData.captionLanguage
+                captionsDataProxy.captionText = captionsData.captionText
+                callback(captionsDataProxy)
             }
 
             callComposite?.events.onDismissed = { dismissedEvent in

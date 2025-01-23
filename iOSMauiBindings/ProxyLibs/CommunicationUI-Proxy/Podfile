@@ -5,6 +5,6 @@ target 'CommunicationUI-Proxy' do
   use_frameworks!
 
   # Pods for CommunicationUI-Proxy
-  pod 'AzureCommunicationUICalling', '1.13.0'
+  pod 'AzureCommunicationUICalling', :git => 'https://github.com/billylo1/communication-ui-library-ios.git', :branch => 'Attempt2', :commit => '7358af12fe5b3786bd02a92d0dc7c1b836794ef9'
 
 end
