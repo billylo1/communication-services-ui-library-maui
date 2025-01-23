@@ -38,6 +38,13 @@ namespace CommunicationCallingSampleMauiApp.Platforms.iOS
             localDataOption.CallScreenTitle = callControlProps.Value.title;
             localDataOption.CallScreenSubtitle = callControlProps.Value.subtitle;
             localDataOption.UpdateTitleSubtitleOnParticipantCountChange = callControlProps.Value.updateSubtitleOnParticipantCountChange;
+            
+
+            CommunicationCaptionsOptionsProxy captionsOptions = new CommunicationCaptionsOptionsProxy();
+            captionsOptions.CaptionsOn = true;
+            captionsOptions.SpokenLanguage = "en-us";
+            localDataOption.CaptionsOptions = captionsOptions;
+
             CommunicationScreenOrientationProxy screenOrientationProxy = new CommunicationScreenOrientationProxy();
             screenOrientationProxy.CallScreenOrientation = orientationProps.Value.callScreenOrientation;
             screenOrientationProxy.SetupScreenOrientation = orientationProps.Value.setupScreenOrientation;
